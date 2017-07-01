@@ -3,7 +3,7 @@ var questions = [
 
 	{
 		question: 'this is a question',
-		answerOne: 'turds',
+		answerOne: 'pogs',
 		answerTwo: 'dogs',
 		answerThree: 'blogs'
 
@@ -11,9 +11,9 @@ var questions = [
 
 	{
 		question: 'this is another question 2',
-		answerOne: 'poops',
+		answerOne: 'clogs',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'pogs'
 
 
 	},
@@ -31,14 +31,14 @@ var questions = [
 		question: 'this is another question 4',
 		answerOne: 'bloops',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'toops'
 
 
 	},
 
 	{
 		question: 'this is a question 5',
-		answerOne: 'turds',
+		answerOne: 'boops',
 		answerTwo: 'dogs',
 		answerThree: 'blogs'
 
@@ -46,9 +46,9 @@ var questions = [
 
 	{
 		question: 'this is another question 6',
-		answerOne: 'poops',
+		answerOne: 'pogs',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'clogs'
 
 
 	},
@@ -57,7 +57,7 @@ var questions = [
 		question: 'this is another question 7',
 		answerOne: 'pogs',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'clogs'
 
 
 	},
@@ -66,7 +66,7 @@ var questions = [
 		question: 'this is another question 8',
 		answerOne: 'bloops',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'clogs'
 
 
 	},
@@ -75,7 +75,7 @@ var questions = [
 		question: 'this is another question 9',
 		answerOne: 'pogs',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'clogs'
 
 
 	},
@@ -84,7 +84,7 @@ var questions = [
 		question: 'this is another question 10',
 		answerOne: 'bloops',
 		answerTwo: 'stogs',
-		answerThree: 'gods'
+		answerThree: 'clogs'
 
 
 	}
@@ -98,7 +98,7 @@ var counter = 30;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var currentQuestion;
-var rightAnswers = ['blogs', 'stogs','gods', 'stogs', 'blogs', 'stogs','gods', 'stogs', 'gods', 'stogs' ];
+var rightAnswers = ['blogs', 'stogs','clogs', 'stogs', 'blogs', 'stogs','clogs', 'stogs', 'clogs', 'stogs' ];
 var currentAnswer;
 var selectedAnswer;
 
@@ -172,7 +172,7 @@ function displayEndOfGame(){
 	$('#answerTwo').hide();
 	$('#answerThree').hide();
 
-	$('body').html('thats the end of the game bitch! you got ' + correctAnswers + ' right and ' + wrongAnswers + ' wrong');
+	$('body').html('thats the end of the game! you got ' + correctAnswers + ' right and ' + wrongAnswers + ' wrong');
 
 }
 
