@@ -97,9 +97,9 @@ var clock;
 var counter = 30;
 var correctAnswers = 0;
 var wrongAnswers = 0;
-var currentQuestion = questions[questionCount];
+var currentQuestion;
 var rightAnswers = ['blogs', 'stogs','gods', 'stogs', 'blogs', 'stogs','gods', 'stogs', 'gods', 'stogs' ];
-var currentAnswer = rightAnswers[questionCount];
+var currentAnswer;
 var selectedAnswer;
 
 
@@ -108,6 +108,7 @@ function displayQuestion(){
 
 	endOfGameCheck();
 	currentQuestion = questions[questionCount];
+	currentAnswer = rightAnswers[questionCount];
 	counter = 30;
 
 	$('#time').show();
