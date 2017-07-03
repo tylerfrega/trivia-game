@@ -2,89 +2,89 @@
 var questions = [
 
 	{
-		question: 'this is a question',
-		answerOne: 'pogs',
-		answerTwo: 'dogs',
-		answerThree: 'blogs'
+		question: 'What is House Starks Valyrian steel sword called?',
+		answerOne: 'Ice',
+		answerTwo: 'Snow',
+		answerThree: 'Winter'
 
 	},
 
 	{
-		question: 'this is another question 2',
-		answerOne: 'clogs',
-		answerTwo: 'stogs',
-		answerThree: 'pogs'
-
-
-	},
-
-	{
-		question: 'this is another question 3',
-		answerOne: 'pogs',
-		answerTwo: 'stogs',
-		answerThree: 'gods'
+		question: 'Where are Jeor and Jorah Mormont from?',
+		answerOne: 'River Run',
+		answerTwo: 'Bear Island',
+		answerThree: 'Essos'
 
 
 	},
 
 	{
-		question: 'this is another question 4',
-		answerOne: 'bloops',
-		answerTwo: 'stogs',
-		answerThree: 'toops'
+		question: 'What is the name of Jon Snows Direwolf?',
+		answerOne: 'Ghost',
+		answerTwo: 'Grey Wind',
+		answerThree: 'Nymeria'
 
 
 	},
 
 	{
-		question: 'this is a question 5',
-		answerOne: 'boops',
-		answerTwo: 'dogs',
-		answerThree: 'blogs'
-
-	},
-
-	{
-		question: 'this is another question 6',
-		answerOne: 'pogs',
-		answerTwo: 'stogs',
-		answerThree: 'clogs'
+		question: 'Which House fought alongside House Barathean during Roberts Rebelion?',
+		answerOne: 'Tully',
+		answerTwo: 'Lanister',
+		answerThree: 'Targaryen'
 
 
 	},
 
 	{
-		question: 'this is another question 7',
-		answerOne: 'pogs',
-		answerTwo: 'stogs',
-		answerThree: 'clogs'
+		question: 'Who did Ned Stark replace as hand of the king?',
+		answerOne: 'Little Finger',
+		answerTwo: 'Sir Bariston Selmey',
+		answerThree: 'Jon Arryn'
+
+	},
+
+	{
+		question: 'Where is the Measters Citadel Located?',
+		answerOne: 'Old Town',
+		answerTwo: 'Harrenhall',
+		answerThree: 'Mordor'
 
 
 	},
 
 	{
-		question: 'this is another question 8',
-		answerOne: 'bloops',
-		answerTwo: 'stogs',
-		answerThree: 'clogs'
+		question: 'Who Killed Areyes Targaryen?',
+		answerOne: 'Robert Baratheon',
+		answerTwo: 'Jamie Lanister',
+		answerThree: 'Ned Stark'
 
 
 	},
 
 	{
-		question: 'this is another question 9',
-		answerOne: 'pogs',
-		answerTwo: 'stogs',
-		answerThree: 'clogs'
+		question: 'Whose House words are "Ours is the fury"?',
+		answerOne: 'Baratheon',
+		answerTwo: 'Tyrell',
+		answerThree: 'Greyjoy'
 
 
 	},
 
 	{
-		question: 'this is another question 10',
-		answerOne: 'bloops',
-		answerTwo: 'stogs',
-		answerThree: 'clogs'
+		question: 'What is the name of the god known as "Lord of Light"?',
+		answerOne: "R'hllor",
+		answerTwo: 'Azor Ahai ',
+		answerThree: 'Voldemort'
+
+
+	},
+
+	{
+		question: 'Who killed Rhaegar Targaryen',
+		answerOne: 'Robert Baratheon',
+		answerTwo: 'Jamie Lanister',
+		answerThree: 'Ned Stark'
 
 
 	}
@@ -98,9 +98,13 @@ var counter = 30;
 var correctAnswers = 0;
 var wrongAnswers = 0;
 var currentQuestion;
-var rightAnswers = ['blogs', 'stogs','clogs', 'stogs', 'blogs', 'stogs','clogs', 'stogs', 'clogs', 'stogs' ];
+var rightAnswers = ['Ice', 'Bear Island','Ghost', 'Tully', 'Jon Arryn', 'Old Town','Jamie Lanister', 'Baratheon', "R'hllor", 'Robert Baratheon' ];
 var currentAnswer;
 var selectedAnswer;
+var gifs = ['assets/images/1.gif', 'assets/images/2.gif', 'assets/images/3.gif', 
+			'assets/images/4.gif', 'assets/images/5.gif', 'assets/images/6.gif', 
+			'assets/images/7.gif', 'assets/images/8.gif', 'assets/images/9.gif', 
+			'assets/images/10.gif'];
 
 
 //displays current question from question array
@@ -111,13 +115,16 @@ function displayQuestion(){
 	currentAnswer = rightAnswers[questionCount];
 	counter = 30;
 
+
+	$('#startButton').hide();
+	$('#gif').hide();
 	$('#time').show();
 	$('#wrong').hide();
 	$('#question').show();
 	$('#answerOne').show();
 	$('#answerTwo').show();
 	$('#answerThree').show();
-		
+		 
 	$('#question').html(currentQuestion.question);
 	$('#answerOne').html(currentQuestion.answerOne);
 	$('#answerTwo').html(currentQuestion.answerTwo);
@@ -147,12 +154,16 @@ function displayWrongAnswerPage(){
 	$('#answerTwo').hide();
 	$('#answerThree').hide();
 	$('#wrong').show();
-	$('#wrong').html('you got it wrong! looser');
+	$('#gif').show();
+	$('#wrong').html('Incorrect! Shame Shame Shame');
+	$('#gif').html('<img src="assets/images/shame.gif"/>')
 	setTimeout(nextQuestion, 5000);
 	
 }
 
 function displayRightAnswerPage(){
+
+	currentGif = gifs[questionCount];
 
 	$('#time').hide();
 	$('#question').hide();
@@ -161,6 +172,7 @@ function displayRightAnswerPage(){
 	$('#answerThree').hide();
 	$('#wrong').show();
 	$('#wrong').html('you got it Right! Winner');
+	$('#gif').show().html('<img src = ' + currentGif + ' />')
 	setTimeout(nextQuestion, 5000);
 	
 }
@@ -202,6 +214,16 @@ function questionTimer(){
 }
 
 
+function displayStartScreen(){
+	$('#time').hide();
+	$('#question').hide();
+	$('#answerOne').hide();
+	$('#answerTwo').hide();
+	$('#answerThree').hide();
+
+	$('#startButton').show();
+}
+
 
 $('body').on('click','.answer', function(event){
 	selectedAnswer = $(this).text();
@@ -217,9 +239,12 @@ $('body').on('click','.answer', function(event){
 		displayWrongAnswerPage();
 	}
 	
-	
-	
 
 });
 
+$('#startButton').on('click', function(){
+	displayQuestion()
+});
 
+
+displayStartScreen();

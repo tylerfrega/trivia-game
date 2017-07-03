@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Trivia Game</title>
-
+	
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	
 	<link rel ='stylesheet' type='text/css' href='assets/css/style.css'/>
@@ -13,6 +14,7 @@
 <body>
 
 <div class='container'>
+<img id='logo' src='assets/images/logo.png'/>
 	<h1>TRIVIA GAME</h1>
 
 <div class='game'>
@@ -20,9 +22,13 @@
 
 
 
-<button id='answerOne' class='answer'></button>
-<button id='answerTwo' class= 'answer'></button>
-<button id='answerThree' class='answer'></button>
+<button id='answerOne' class='answer btn-default'></button>
+<button id='answerTwo' class= 'answer btn-default'></button>
+<button id='answerThree' class='answer btn-default'></button>
+
+<button id='startButton' class='btn-default'>Start Game</button>
+<div id ='gif'></div>
+
 
 
 <div id='time'></div>
