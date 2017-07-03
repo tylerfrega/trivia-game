@@ -64,8 +64,8 @@ var questions = [
 
 	{
 		question: 'Whose House words are "Ours is the fury"?',
-		answerOne: 'Baratheon',
-		answerTwo: 'Tyrell',
+		answerOne: 'Tyrell',
+		answerTwo: 'Baratheon',
 		answerThree: 'Greyjoy'
 
 
@@ -73,8 +73,8 @@ var questions = [
 
 	{
 		question: 'What is the name of the god known as "Lord of Light"?',
-		answerOne: "R'hllor",
-		answerTwo: 'Azor Ahai ',
+		answerOne: 'Azor Ahai',
+		answerTwo: "R'hllor",
 		answerThree: 'Voldemort'
 
 
@@ -82,9 +82,9 @@ var questions = [
 
 	{
 		question: 'Who killed Rhaegar Targaryen',
-		answerOne: 'Robert Baratheon',
+		answerOne: 'Ned Stark',
 		answerTwo: 'Jamie Lanister',
-		answerThree: 'Ned Stark'
+		answerThree:'Robert Baratheon' 
 
 
 	}
@@ -110,13 +110,14 @@ var gifs = ['assets/images/1.gif', 'assets/images/2.gif', 'assets/images/3.gif',
 //displays current question from question array
 function displayQuestion(){
 
-	endOfGameCheck();
+	//endOfGameCheck();
 	currentQuestion = questions[questionCount];
 	currentAnswer = rightAnswers[questionCount];
 	counter = 30;
 
 
 	$('#startButton').hide();
+	$('#startOver').hide();
 	$('#gif').hide();
 	$('#time').show();
 	$('#wrong').hide();
@@ -137,9 +138,13 @@ function displayQuestion(){
 
 
 function nextQuestion(){
-	
 	questionCount = (questionCount + 1);
+	
+	if(questionCount >= 10){
+		displayEndOfGame();
+	}else{
 	displayQuestion();
+   }
 };
 
 
@@ -157,7 +162,7 @@ function displayWrongAnswerPage(){
 	$('#gif').show();
 	$('#wrong').html('Incorrect! Shame Shame Shame');
 	$('#gif').html('<img src="assets/images/shame.gif"/>')
-	setTimeout(nextQuestion, 5000);
+	setTimeout(nextQuestion, 4000);
 	
 }
 
@@ -171,29 +176,27 @@ function displayRightAnswerPage(){
 	$('#answerTwo').hide();
 	$('#answerThree').hide();
 	$('#wrong').show();
-	$('#wrong').html('you got it Right! Winner');
+	$('#wrong').html('Correct! You have brought honnor to your house');
 	$('#gif').show().html('<img src = ' + currentGif + ' />')
-	setTimeout(nextQuestion, 5000);
+	setTimeout(nextQuestion, 4000);
 	
 }
 
 function displayEndOfGame(){
+	
+	$('#end').show().text('Thats the end of the game! you got ' + correctAnswers + ' right and ' + wrongAnswers + ' wrong');
 	$('#time').hide();
 	$('#question').hide();
 	$('#answerOne').hide();
 	$('#answerTwo').hide();
 	$('#answerThree').hide();
+	$('#gif').hide();
+	$('#wrong').hide();
+	$('#startOver').show().html('<button class= "btn-default">Start Over</button>');
 
-	$('body').html('thats the end of the game! you got ' + correctAnswers + ' right and ' + wrongAnswers + ' wrong');
 
-}
+	
 
-function endOfGameCheck() {
-	if(questionCount >= 10){
-		displayEndOfGame();
-	}else{
-		return;
-	}
 }
 
 
@@ -243,8 +246,23 @@ $('body').on('click','.answer', function(event){
 });
 
 $('#startButton').on('click', function(){
-	displayQuestion()
+	displayQuestion();
 });
+
+
+$('#startOver').on('click', function(){
+	questionCount = 0;
+	correctAnswers = 0;
+	wrongAnswers = 0;
+	
+	$('#end').hide();
+
+	displayQuestion();
+});
+
+
+
+
 
 
 displayStartScreen();
